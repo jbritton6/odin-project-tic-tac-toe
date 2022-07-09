@@ -33,6 +33,14 @@ const Board = (player1, player2) => {
         activePlayerToken = token;
     };
 
+    const getCellPosition = (cell) => {
+        const classes = cell.className;
+        const row = classes.match(/(?<=row-)\d/)[0];
+        const col = classes.match(/(?<=row-\d-col-)\d/)[0];
+
+        return [row, col]
+    };
+
     const switchActivePlayer = (player1, player2) => {
         if (player1.getPlayerToken() === activePlayerToken) {
             activePlayerToken = player2.getPlayerToken();
@@ -42,9 +50,7 @@ const Board = (player1, player2) => {
     }
 
     const setCellValue = (cell) => {
-        const classes = cell.className;
-        const row = classes.match(/(?<=row-)\d/)[0];
-        const col = classes.match(/(?<=row-\d-col-)\d/)[0];
+        [row, col] = getCellPosition(cell);
 
         console.log(row, col);
         cell.textContent = activePlayerToken;
