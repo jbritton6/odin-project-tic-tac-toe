@@ -31,7 +31,18 @@ const Board = () => {
 
     const setActivePlayerToken = (token) => {
         activePlayerToken = token;
-    }
+    };
+
+    const setCellValue = (cell) => {
+        const classes = cell.className;
+        const row = classes.match(/(?<=row-)\d/)[0];
+        const col = classes.match(/(?<=row-\d-col-)\d/)[0];
+
+        console.log(row, col);
+        cell.textContent = activePlayerToken;
+        board[row][col] = activePlayerToken;
+    };
+
 
     const clearBoard = () => {
         board = Array(3).fill(null).map(() => Array(3).fill(null)); 
@@ -45,15 +56,7 @@ const Board = () => {
     const initalizeBoard = () => {
         cells = document.querySelectorAll(".cell");
         for (let cell of cells) {
-            cell.addEventListener('click', () => {
-                const classes = cell.className
-                const row = classes.match(/(?<=row-)\d/)[0];
-                const col = classes.match(/(?<=row-\d-col-)\d/)[0];
-
-                console.log(row, col);
-                cell.textContent = activePlayerToken;
-                board[row][col] = activePlayerToken;
-            });
+            cell.addEventListener('click', () => setCellValue(cell));
         };
     };
 
