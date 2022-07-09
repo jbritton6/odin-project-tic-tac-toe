@@ -27,10 +27,10 @@ const Player = () => {
 
 const Board = (player1, player2) => {
     let board;
-    let activePlayerToken;
+    let activePlayer;
 
-    const setActivePlayerToken = (token) => {
-        activePlayerToken = token;
+    const setActivePlayer = (player) => {
+        activePlayer = player;
     };
 
     const getCellPosition = (cell) => {
@@ -42,10 +42,10 @@ const Board = (player1, player2) => {
     };
 
     const switchActivePlayer = (player1, player2) => {
-        if (player1.getPlayerToken() === activePlayerToken) {
-            activePlayerToken = player2.getPlayerToken();
+        if (player1 === activePlayer) {
+            setActivePlayer(player2);
         } else {
-            activePlayerToken = player1.getPlayerToken();
+            setActivePlayer(player1);
         }
     };
 
@@ -62,8 +62,8 @@ const Board = (player1, player2) => {
 
         if (!cellOccupied(row, col)) {
             console.log(row, col);
-            cell.textContent = activePlayerToken;
-            board[row][col] = activePlayerToken;
+            cell.textContent = activePlayer.getPlayerToken();
+            board[row][col] = activePlayer.getPlayerToken();
 
             switchActivePlayer(player1, player2);
         }
@@ -138,7 +138,7 @@ const Board = (player1, player2) => {
     };
 
     return {
-        setActivePlayerToken,
+        setActivePlayer,
         board,
         logBoard,
         clearBoard,
@@ -160,7 +160,7 @@ const Board = (player1, player2) => {
     const gameBoard = Board(player1, player2);
     gameBoard.clearBoard();
     gameBoard.initalizeBoard();
-    gameBoard.setActivePlayerToken('x')
+    gameBoard.setActivePlayer(player1)
     console.log(gameBoard.logBoard());
 })();
 
