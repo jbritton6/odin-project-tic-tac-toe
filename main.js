@@ -27,7 +27,11 @@ const Player = () => {
 
 const Board = () => {
     let board;
-    let activePlayerToken = 0;
+    let activePlayerToken;
+
+    const setActivePlayerToken = (token) => {
+        activePlayerToken = token;
+    }
 
     const clearBoard = () => {
         board = Array(3).fill(null).map(() => Array(3).fill(null)); 
@@ -105,6 +109,7 @@ const Board = () => {
     };
 
     return {
+        setActivePlayerToken,
         board,
         logBoard,
         clearBoard,
@@ -112,6 +117,23 @@ const Board = () => {
         checkWinner,
     };
 };
+
+
+(() => {
+    const player1 = Player();
+    const player2 = Player();
+
+    player1.setPlayerName();
+    player1.setPlayerToken('X');
+    player2.setPlayerName();
+    player2.setPlayerToken('P');
+
+    const gameBoard = Board();
+    gameBoard.clearBoard();
+    gameBoard.initalizeBoard();
+    gameBoard.setActivePlayerToken('x')
+    console.log(gameBoard.logBoard());
+})();
 
 /*
 const jim = Player();
@@ -121,8 +143,11 @@ jim.setPlayerToken("X");
 console.log(jim.getPlayerToken());
 */
 
+/*
 const board = Board();
+console.log(board.logBoard());
 board.clearBoard();
+console.log(board.logBoard());
 board.initalizeBoard();
 console.log(board.checkWinner());
-//console.log(board.clearBoard());
+*/
