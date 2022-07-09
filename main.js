@@ -25,13 +25,21 @@ const Player = () => {
 };
 
 
-const Board = () => {
+const Board = (player1, player2) => {
     let board;
     let activePlayerToken;
 
     const setActivePlayerToken = (token) => {
         activePlayerToken = token;
     };
+
+    const switchActivePlayer = (player1, player2) => {
+        if (player1.getPlayerToken() === activePlayerToken) {
+            activePlayerToken = player2.getPlayerToken();
+        } else {
+            activePlayerToken = player1.getPlayerToken();
+        }
+    }
 
     const setCellValue = (cell) => {
         const classes = cell.className;
@@ -41,6 +49,8 @@ const Board = () => {
         console.log(row, col);
         cell.textContent = activePlayerToken;
         board[row][col] = activePlayerToken;
+
+        switchActivePlayer(player1, player2);
     };
 
 
@@ -131,7 +141,7 @@ const Board = () => {
     player2.setPlayerName();
     player2.setPlayerToken('P');
 
-    const gameBoard = Board();
+    const gameBoard = Board(player1, player2);
     gameBoard.clearBoard();
     gameBoard.initalizeBoard();
     gameBoard.setActivePlayerToken('x')
