@@ -84,7 +84,6 @@ const Board = (player1, player2) => {
         }
     };
 
-
     const clearBoard = () => {
         board = Array(3).fill(null).map(() => Array(3).fill(null)); 
 
@@ -174,10 +173,8 @@ const Board = (player1, player2) => {
 
     return {
         setActivePlayer,
-        board,
         clearBoard,
         initalizeBoard,
-        checkWinner,
         enableBoard,
         disableBoard,
     };
