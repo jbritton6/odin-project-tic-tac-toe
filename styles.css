@@ -24,7 +24,6 @@ body {
 }
 
 .board-disable {
-    background-color: red;
     display: block;
     width: 100vw;
     opacity: 0.3;
