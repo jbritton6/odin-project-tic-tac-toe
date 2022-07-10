@@ -97,10 +97,6 @@ const Board = (player1, player2) => {
         return board;
     };
 
-    const logBoard = () => {
-        console.table(board);
-    }
-
     const initalizeBoard = () => {
         cells = document.querySelectorAll(".cell");
         for (let cell of cells) {
@@ -179,7 +175,6 @@ const Board = (player1, player2) => {
     return {
         setActivePlayer,
         board,
-        logBoard,
         clearBoard,
         initalizeBoard,
         checkWinner,
