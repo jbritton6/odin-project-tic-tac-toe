@@ -75,10 +75,9 @@ const Board = (player1, player2) => {
         [row, col] = getCellPosition(cell);
 
         if (!cellOccupied(row, col)) {
-            console.log(row, col);
             cell.textContent = activePlayer.getPlayerToken();
             board[row][col] = activePlayer.getPlayerToken();
-            logBoard();
+
             checkWinner();
             switchActivePlayer(player1, player2);
         }
