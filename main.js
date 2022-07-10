@@ -68,7 +68,7 @@ const Board = (player1, player2) => {
     };
 
     const displayWinner = () => {
-        alert(activePlayer.getPlayerName());
+        alert(activePlayer.getPlayerName() + " wins!");
     };
 
     const setCellValue = (cell) => {
