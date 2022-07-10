@@ -203,7 +203,7 @@ const Board = (player1, player2) => {
         player1.setPlayerName();
         player1.setPlayerToken('X');
         player2.setPlayerName();
-        player2.setPlayerToken('P');
+        player2.setPlayerToken('O');
 
         const gameBoard = Board(player1, player2);
         gameBoard.enableBoard();
