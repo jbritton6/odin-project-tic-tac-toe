@@ -25,10 +25,11 @@ body {
 
 .board-disable {
     background-color: red;
+    display: block;
     width: 100vw;
     opacity: 0.3;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
 }
 
 .cell {

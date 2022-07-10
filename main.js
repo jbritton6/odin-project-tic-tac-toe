@@ -29,6 +29,16 @@ const Board = (player1, player2) => {
     let board;
     let activePlayer;
 
+    const enableBoard = () => {
+        const boardDisable = document.querySelector(".board-disable");
+        boardDisable.style.display = "none";
+    }
+
+    const disableBoard = () => {
+        const boardDisable = document.querySelector(".board-disable");
+        boardDisable.style.display = "block";  
+    }
+
     const setActivePlayer = (player) => {
         activePlayer = player;
     };
@@ -77,6 +87,11 @@ const Board = (player1, player2) => {
 
     const clearBoard = () => {
         board = Array(3).fill(null).map(() => Array(3).fill(null)); 
+
+        cells = document.querySelectorAll(".cell");
+        for (let cell of cells) {
+            cell.textContent = "";
+        };
         return board;
     };
 
@@ -98,6 +113,7 @@ const Board = (player1, player2) => {
             (board[0][0] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[0][0];
 
         } else if (
@@ -106,6 +122,7 @@ const Board = (player1, player2) => {
             (board[1][0] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[1][0];
 
         } else if (
@@ -114,6 +131,7 @@ const Board = (player1, player2) => {
             (board[2][1] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[2][0];
 
         } else if (
@@ -122,6 +140,7 @@ const Board = (player1, player2) => {
             (board[0][0] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[0][0];
 
         } else if (
@@ -130,6 +149,7 @@ const Board = (player1, player2) => {
             (board[0][1] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[0][1];
 
         } else if (
@@ -138,6 +158,7 @@ const Board = (player1, player2) => {
             (board[0][2] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[0][2];
 
         } else if (
@@ -146,6 +167,7 @@ const Board = (player1, player2) => {
             (board[0][0] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[0][0];
 
         } else if (
@@ -154,6 +176,7 @@ const Board = (player1, player2) => {
             (board[2][0] !== null)
         ) {
             displayWinner();
+            disableBoard();
             return board[2][0];
         }
     };
@@ -165,24 +188,36 @@ const Board = (player1, player2) => {
         clearBoard,
         initalizeBoard,
         checkWinner,
+        enableBoard,
+        disableBoard,
     };
 };
 
 
 (() => {
-    const player1 = Player();
-    const player2 = Player();
 
-    player1.setPlayerName();
-    player1.setPlayerToken('X');
-    player2.setPlayerName();
-    player2.setPlayerToken('P');
+    const newGame = () => {
+        const player1 = Player();
+        const player2 = Player();
 
-    const gameBoard = Board(player1, player2);
-    gameBoard.clearBoard();
-    gameBoard.initalizeBoard();
-    gameBoard.setActivePlayer(player1)
-    console.log(gameBoard.logBoard());
+        player1.setPlayerName();
+        player1.setPlayerToken('X');
+        player2.setPlayerName();
+        player2.setPlayerToken('P');
+
+        const gameBoard = Board(player1, player2);
+        gameBoard.enableBoard();
+        gameBoard.clearBoard();
+        gameBoard.initalizeBoard();
+        gameBoard.setActivePlayer(player1)
+        console.log(gameBoard.logBoard());
+    };
+
+    (newGameButton = () => {
+        const button = document.querySelector(".new-game-button");
+        button.addEventListener('click', newGame);
+    })();
+
 })();
 
 /*
