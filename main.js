@@ -71,7 +71,7 @@ const Board = (player1, player2) => {
         alert(activePlayer.getPlayerName() + " wins!");
     };
 
-    const setCellValue = (cell) => {
+    const executeMove = (cell) => {
         [row, col] = getCellPosition(cell);
 
         if (!cellOccupied(row, col)) {
@@ -98,7 +98,7 @@ const Board = (player1, player2) => {
     const initalizeBoard = () => {
         cells = document.querySelectorAll(".cell");
         for (let cell of cells) {
-            cell.addEventListener('click', () => setCellValue(cell));
+            cell.addEventListener('click', () => executeMove(cell));
         };
     };
 
