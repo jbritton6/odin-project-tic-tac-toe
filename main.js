@@ -3,7 +3,10 @@ const Player = () => {
     let playerToken;
 
     const setPlayerName = () => {
-        playerName = prompt("Enter player name:", "Player");
+        do {
+            playerName = prompt("Enter player name:", "Player");
+        } while (playerName === null);
+
     };
     const getPlayerName = () => {
         return playerName;
