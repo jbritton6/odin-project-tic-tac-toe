@@ -12,12 +12,13 @@ body {
 }
 
 .board {
-    background-color: burlywood;
+    background-color: blanchedalmond;
     border: 5px solid black;
     box-sizing: border-box;
     display: grid;
     gap: 20px;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
     width: 400px;
     padding: 20px;
 }
@@ -27,11 +28,11 @@ body {
     width: 100vw;
     opacity: 0.3;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
 }
 
 .cell {
-    background-color: brown;
+    background-color: burlywood;
 }
 
 .panel {
