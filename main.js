@@ -214,20 +214,3 @@ const Board = (player1, player2) => {
     })();
 
 })();
-
-/*
-const jim = Player();
-jim.setPlayerName();
-console.log(jim.getPlayerName());
-jim.setPlayerToken("X");
-console.log(jim.getPlayerToken());
-*/
-
-/*
-const board = Board();
-console.log(board.logBoard());
-board.clearBoard();
-console.log(board.logBoard());
-board.initalizeBoard();
-console.log(board.checkWinner());
-*/
