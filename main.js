@@ -183,8 +183,7 @@ const Board = (player1, player2) => {
 };
 
 
-(() => {
-
+(main = () => {
     const newGame = () => {
         const player1 = Player();
         const player2 = Player();
