@@ -3,7 +3,7 @@ const Player = () => {
     let playerToken;
 
     const setPlayerName = () => {
-        playerName = prompt("Enter name for player 1:", "Player 1");
+        playerName = prompt("Enter player name:", "Player");
     };
     const getPlayerName = () => {
         return playerName;
@@ -78,7 +78,7 @@ const Board = (player1, player2) => {
             console.log(row, col);
             cell.textContent = activePlayer.getPlayerToken();
             board[row][col] = activePlayer.getPlayerToken();
-
+            logBoard();
             checkWinner();
             switchActivePlayer(player1, player2);
         }
@@ -91,12 +91,14 @@ const Board = (player1, player2) => {
         cells = document.querySelectorAll(".cell");
         for (let cell of cells) {
             cell.textContent = "";
+            const newCell = cell.cloneNode(true);
+            cell.parentNode.replaceChild(newCell, cell);
         };
         return board;
     };
 
     const logBoard = () => {
-        return board;
+        console.table(board);
     }
 
     const initalizeBoard = () => {
@@ -114,7 +116,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[0][0];
 
         } else if (
             (board[1][0] === board[1][1]) && 
@@ -123,7 +124,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[1][0];
 
         } else if (
             (board[2][0] === board[2][1]) && 
@@ -132,7 +132,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[2][0];
 
         } else if (
             (board[0][0] === board[1][0]) && 
@@ -150,7 +149,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[0][1];
 
         } else if (
             (board[0][2] === board[1][2]) && 
@@ -159,7 +157,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[0][2];
 
         } else if (
             (board[0][0] === board[1][1]) && 
@@ -168,7 +165,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[0][0];
 
         } else if (
             (board[2][0] === board[1][1]) && 
@@ -177,7 +173,6 @@ const Board = (player1, player2) => {
         ) {
             displayWinner();
             disableBoard();
-            return board[2][0];
         }
     };
 
